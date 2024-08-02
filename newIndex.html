@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculo de Holerite</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Itim&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+
+      .input_txt {
+        width: 300px;
+        height: 40px;
+        outline: none;
+        border-bottom: 2px;
+        border-color: black;
+        border-style: solid;
+        font-size: 20px;
+        padding-left: 5px;
+        background-color: transparent;
+      }
+
+      label {
+        position: absolute;
+        top: 10px;
+        left: 5px;
+        pointer-events: none;
+        transition: 0.5s;
+        font-weight: bold;
+      }
+
+      .input_txt:focus ~ label {
+        top: -15px;
+        font-size: 15px;
+        color: black;
+        left: 1px;
+        opacity: 1;
+      }
+
+      .input_txt:valid ~ label {
+        top: -15px;
+        font-size: 15px;
+        color: rgb(37, 209, 37);
+        left: 1px;
+        opacity: 1;
+      }
+      label,
+      #textChildren {
+        font-family: "Itim", cursive;
+        font-weight: 400;
+        font-style: normal;
+      }
+      .mainBox {
+        width: 500px;
+      }
+      #dataEnterBox {
+        height: 70px;
+        overflow: hidden;
+        transition: all 1.5s ease-in-out;
+        cursor: pointer;
+      }
+      #extraHoursBox {
+        overflow: hidden;
+        height: 70px;
+        transition: all 1.5s ease-in-out;
+        cursor: pointer;
+      }
+      #monthDayBox {
+        overflow: hidden;
+        height: 70px;
+        transition: all 1.5s ease-in-out;
+        cursor: pointer;
+      }
+    </style>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .fontTitleOne {
+          font-size: 30px;
+          font-family: "JetBrains Mono", monospace;
+        }
+        .fontItim {
+          font-family: "Itim", cursive;
+          font-weight: 400;
+          font-size: 20px;
+          font-style: normal;
+        }
+        .buttonColor {
+            background-color: rgb(0, 153, 255);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <form action="">
+      <div
+        action=""
+        id="dataEnterBox"
+        class="flex flex-col gap-4 ml-auto mr-auto bg-slate-200 mainBox"
+      >
+        <div>
+          <h2 id="enterDataButton" class="lg:fontTitleOne pt-3 text-center">
+            ENTRADA DE DADOS
+          </h2>
+          <div class="pl-12 pt-8">
+            <div style="position: relative">
+              <input name="nome" class="input_txt" required type="text" />
+              <label class="text-xl" for="">Nome</label>
+            </div>
+          </div>
+
+          <div class="pl-12 pt-8">
+            <div style="position: relative">
+              <input name="nRegistro" class="input_txt" required type="text" />
+              <label class="text-xl" for="">N° de registro</label>
+            </div>
+          </div>
+
+          <div id="" class="pl-12 pt-8">
+            <div>
+              <h2 id="textChildren" class="pb-3 text-xl">
+                Tem filhos com menos de 13 anos?
+              </h2>
+
+              <div class="">
+                <div class="fontItim">
+                  <input type="radio" name="has13YOChild" id="yes13YO" /> Sim
+                </div>
+                <div class="fontItim">
+                  <input type="radio" name="has13YOChild" id="no13YO" /> Não
+                </div>
+              </div>
+
+              <div id="hasChildren" hidden class="pt-5">
+                <div id="hasChildrenTransition" style="position: relative">
+                  <input name="filhos" class="input_txt" required type="text" />
+                  <label class="text-xl" for="">Quantos filhos?</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          action=""
+          id="extraHoursBox"
+          class="flex flex-col gap-4 ml-auto mr-auto bg-slate-200 mainBox"
+        >
+          <h2 id="extraHoursButton" class="lg:fontTitleOne pt-3 text-center">
+            HORAS EXTRAS
+          </h2>
+          <div id="" class="pl-12 pt-8">
+            <div>
+              <h2 id="textChildren" class="pb-3 text-xl">
+                Fez hora extra de segunda a sábado?
+              </h2>
+
+              <div class="">
+                <div class="fontItim">
+                  <input type="radio" name="hasExtraHour" id="yesExtraHour" />
+                  Sim
+                </div>
+
+                <div class="fontItim">
+                  <input type="radio" name="hasExtraHour" id="noExtraHour" />
+                  Não
+                </div>
+              </div>
+
+              <div id="hasExtraHourDiv" hidden class="pt-5">
+                <div style="position: relative">
+                  <input
+                    name="quantasHoras"
+                    class="input_txt"
+                    required
+                    type="text"
+                  />
+                  <label class="text-xl" for="">Quantas horas?</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-8">
+              <h2 id="textChildren" class="pb-3 text-xl">
+                Fez hora extra de domingo e feriado?
+              </h2>
+
+              <div class="">
+                <div class="fontItim">
+                  <input type="radio" name="hasFeriado" id="yesFeriado" />
+                  Sim
+                </div>
+
+                <div class="fontItim">
+                  <input type="radio" name="hasFeriado" id="noFeriado" />
+                  Não
+                </div>
+              </div>
+
+              <div id="hasFeriadoDiv" hidden class="pt-5">
+                <div style="position: relative">
+                  <input name="" class="input_txt" required type="text" id="" />
+                  <label class="text-xl" for="">Quantas horas?</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          action=""
+          id="monthDayBox"
+          class="flex flex-col gap-4 ml-auto mr-auto bg-slate-200 mainBox"
+        >
+          <h2 id="monthDayButton" class="lg:fontTitleOne pt-3 text-center">
+            DIAS DO MÊS
+          </h2>
+          <div>
+            <div class="">
+              <div class="pl-12 pt-8">
+                <div style="position: relative">
+                  <input
+                    name="diasUteis"
+                    class="input_txt"
+                    required
+                    type="number"
+                  />
+                  <label class="text-xl" for="">Dias Úteis</label>
+                </div>
+              </div>
+              <div class="pl-12 pt-8">
+                <div style="position: relative">
+                  <input
+                    name="domingosFeriados"
+                    class="input_txt"
+                    required
+                    type="number"
+                  />
+                  <label class="text-xl" for="">Domingos e feriados</label>
+                </div>
+              </div>
+              <div class="pl-12 pt-8">
+                <div style="position: relative">
+                  <input
+                    name="salarioBruto"
+                    class="input_txt"
+                    required
+                    type="number"
+                  />
+                  <label class="text-xl" for="">Salário Bruto</label>
+                </div>
+              </div>
+              <div class="pl-12 pt-8">
+                <div style="position: relative">
+                  <input
+                    name="faltasDias"
+                    class="input_txt"
+                    required
+                    type="number"
+                  />
+                  <label class="text-xl" for="">Faltas (dias)</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-center pt-4">
+            <div>
+              <input 
+              value="Gerar Hollerith" 
+              type="submit" 
+              class="w-full rounded bg-indigo-500 text-indigo-50 p-2 text-center font-bold hover:bg-indigo-400"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <script src="newScript.js"></script>
+  </body>
+</html>
