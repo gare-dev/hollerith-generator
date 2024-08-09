@@ -1,68 +1,43 @@
-document.getElementById("yes13YO").addEventListener("click", function () {
-  document.getElementById("hasChildren").removeAttribute("hidden");
-});
-
-
-document.getElementById("no13YO").addEventListener("click", function () {
-  document.getElementById("hasChildren").setAttribute("hidden", "");
-});
-
-
-document.getElementById("yesExtraHour").addEventListener("click", function () {
-  document.getElementById("hasExtraHourDiv").removeAttribute("hidden");
-});
-
-
-document.getElementById("noExtraHour").addEventListener("click", function () {
-  document.getElementById("hasExtraHourDiv").setAttribute("hidden", "");
-});
-
-
-document.getElementById("yesFeriado").addEventListener("click", function () {
-  document.getElementById("hasFeriadoDiv").removeAttribute("hidden");
-});
-
-document.getElementById("noFeriado").addEventListener("click", function () {
-  document.getElementById("hasFeriadoDiv").setAttribute("hidden", "");
-});
-
-
 const dataEnterBox = document.getElementById("dataEnterBox");
 const enterDataButton = document.getElementById("enterDataButton");
-
-enterDataButton.addEventListener("click", function () {
-  if (dataEnterBox.style.height === "460px") {
-    dataEnterBox.style.height = "70px";
-    enterDataButton.style.cursor = "pointer";
-  } else {
-    dataEnterBox.style.height = "460px";
-    dataEnterBox.style.cursor = "default";
-  }
-});
-
 const extraHoursButton = document.getElementById("extraHoursButton");
 const extraHoursBox = document.getElementById("extraHoursBox");
-
-extraHoursButton.addEventListener("click", function () {
-  if (extraHoursBox.style.height === "490px") {
-    extraHoursBox.style.height = "70px";
-    extraHoursBox.style.cursor = "pointer"
-  } else {
-    extraHoursBox.style.height = "490px";
-    extraHoursBox.style.cursor = "default"
-
-  }
-});
-
 const monthDayBox = document.getElementById("monthDayBox");
 const monthDayButton = document.getElementById("monthDayButton");
 
-monthDayButton.addEventListener("click", function () {
-  if (monthDayBox.style.height === "490px") {
-    monthDayBox.style.height = "70px";
-    monthDayBox.style.cursor = "pointer"
-  } else {
-    monthDayBox.style.height = "490px";
-    monthDayBox.style.cursor = "default"
-  }
-});
+const removeHidden = (yesButton, boxHidden) => {
+  document.getElementById(yesButton).addEventListener("click", function () {
+    document.getElementById(boxHidden).removeAttribute("hidden");
+  });
+};
+
+const setHidden = (noButton, boxHiden) => {
+  document.getElementById(noButton).addEventListener("click", function () {
+    document.getElementById(boxHiden).setAttribute("hidden", "");
+  });
+};
+
+const openBox = (h2Button, box) => {
+  h2Button.addEventListener("click", function () {
+    if (box.style.height === "490px") {
+      box.style.height = "70px";
+      box.style.cursor = "pointer";
+    }
+
+    box.style.height = "490px";
+    box.style.cursor = "default";
+  });
+};
+
+removeHidden("yes13YO", "hasChildren");
+setHidden("no13YO", "hasChildren");
+
+removeHidden("yesExtraHour", "hasExtraHourDiv");
+setHidden("noExtraHour", "hasExtraHourDiv");
+
+removeHidden("yesFeriado", "hasFeriadoDiv");
+setHidden("noFeriado", "hasFeriadoDiv");
+
+openBox(monthDayButton, monthDayBox);
+openBox(extraHoursButton, extraHoursBox);
+openBox(enterDataButton, dataEnterBox);
