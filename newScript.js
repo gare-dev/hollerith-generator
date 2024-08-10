@@ -22,10 +22,10 @@ const openBox = (h2Button, box) => {
     if (box.style.height === "490px") {
       box.style.height = "70px";
       box.style.cursor = "pointer";
+    } else {
+      box.style.height = "490px";
+      box.style.cursor = "default";
     }
-
-    box.style.height = "490px";
-    box.style.cursor = "default";
   });
 };
 
