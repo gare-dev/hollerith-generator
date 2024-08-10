@@ -29,9 +29,6 @@ const openBox = (h2Button, box) => {
   });
 };
 
-removeHidden("yes13YO", "hasChildren");
-setHidden("no13YO", "hasChildren");
-
 removeHidden("yesExtraHour", "hasExtraHourDiv");
 setHidden("noExtraHour", "hasExtraHourDiv");
 
@@ -40,4 +37,32 @@ setHidden("noFeriado", "hasFeriadoDiv");
 
 openBox(monthDayButton, monthDayBox);
 openBox(extraHoursButton, extraHoursBox);
-openBox(enterDataButton, dataEnterBox);
+
+enterDataButton.addEventListener("click", () => {
+  if (
+    dataEnterBox.style.height === "350px" ||
+    dataEnterBox.style.height === "420px"
+  ) {
+    dataEnterBox.style.height = "70px";
+    dataEnterBox.style.cursor = "pointer";
+  } else if (document.getElementById("hasChildren").hasAttribute("hidden")) {
+    dataEnterBox.style.height = "350px";
+    dataEnterBox.style.cursor = "default";
+  } else if (
+    document.getElementById("hasChildren").hasAttribute("hidden") === false
+  ) {
+    dataEnterBox.style.height = "420px";
+  }
+});
+
+document.getElementById("yes13YO").addEventListener("click", () => {
+  dataEnterBox.style.height = "420px";
+  setTimeout(() => {
+    document.getElementById("hasChildren").removeAttribute("hidden");
+  }, 1100);
+});
+
+document.getElementById("no13YO").addEventListener("click", () => {
+  dataEnterBox.style.height = "350px";
+  document.getElementById("hasChildren").setAttribute("hidden", "");
+});
