@@ -100,7 +100,7 @@
 
 <body>
   <form action="calholle.php" method="post">
-    <div action="" id="dataEnterBox" class="flex flex-col gap-4 ml-auto mr-auto bg-slate-200 mainBox">
+    <div id="dataEnterBox" class="flex flex-col gap-4 ml-auto mr-auto bg-slate-200 mainBox">
       <div>
         <h2 id="enterDataButton" class="lg:fontTitleOne pt-3 text-center">
           ENTRADA DE DADOS
@@ -136,7 +136,7 @@
 
             <div id="hasChildren" hidden class="pt-5">
               <div id="hasChildrenTransition" style="position: relative">
-                <input name="filhos" class="input_txt" type="text" />
+                <input id="inputQtFilhos" name="filhos" class="input_txt" type="text" />
                 <label class="text-xl" for="">Quantos filhos?</label>
               </div>
             </div>
@@ -145,7 +145,7 @@
       </div>
     </div>
     <div>
-      <div action="" id="extraHoursBox" class="flex flex-col gap-4 ml-auto mr-auto bg-slate-200 mainBox">
+      <div id="extraHoursBox" style="height: 70px;" class="flex flex-col gap-4 ml-auto mr-auto bg-slate-200 mainBox">
         <h2 id="extraHoursButton" class="lg:fontTitleOne pt-3 text-center">
           HORAS EXTRAS
         </h2>
@@ -169,7 +169,7 @@
 
             <div id="hasExtraHourDiv" hidden class="pt-5">
               <div style="position: relative">
-                <input name="quantasHorasExtra" class="input_txt" type="text" />
+                <input id="inputQtHoras" name="quantasHorasExtra" class="input_txt" type="text" />
                 <label class="text-xl" for="">Quantas horas?</label>
               </div>
             </div>
@@ -194,7 +194,7 @@
 
             <div id="hasFeriadoDiv" hidden class="pt-5">
               <div style="position: relative">
-                <input name="extraFeriado" class="input_txt" type="text" id="" />
+                <input name="extraFeriado" class="input_txt" type="text" id="inputQtHorasFeriado" />
                 <label class="text-xl" for="">Quantas horas?</label>
               </div>
             </div>
